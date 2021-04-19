@@ -1,0 +1,12 @@
+body {
+    font-family: Arial;
+  }
+  pre {
+    border: inset 1px;
+    padding: 5px 20px;
+    color: #007;
+    background-color: #eef;
+  }
+  #readyState, #status {
+    color: blue;
+  }
