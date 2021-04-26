@@ -1,4 +1,4 @@
-var request = new XMLHttpRequest ()
+const request = new XMLHttpRequest ()
 
 request.onreadystatechange = function () {
     document.querySelector( "#readyState" )
@@ -20,11 +20,24 @@ function parseToJson () {
           document.querySelector ("#response").innerHTML 
         )
     document.querySelector ("#response").innerHTML = ""
-    for ( var x of notes ) {
-            var elem = document.createElement ( 'p' )
-            elem.innerHTML = notes [x]["title"] + ": " + notes [x]["ref"]
-            document.querySelector ( "#response" )
-                              .appendChild ( elem )               
+    for ( const x in notes ) {
+        //console.log(notes )    
+        //console.log(notes [x])
+        /*
+        const elem = document.createElement ( 'p' )
+        elem.innerHTML = notes [x]["title"] + ": " + notes [x]["ref"]
+        document.querySelector ( "#response" )
+                                .appendChild ( elem )
+        */                                
+        const elemP = document.createElement ('p')
+        elemP.innerHTML = notes [x]["title"]
+        document.querySelector ( "#response" )
+                                .appendChild ( elemP )
+        const elemImg = document.createElement ('img')
+        elemImg.src = notes [x]["ref"]
+        document.querySelector ( "#response" )
+                                .appendChild ( elemImg )
+
     }
     document.querySelector ("button").innerHTML = "stringify JSON"
     document.querySelector ("button").onclick = stringifyObject
