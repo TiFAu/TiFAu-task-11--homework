@@ -36,6 +36,7 @@ log
     22:26:01[2]: "space"
 }
 */
+/*
 for (const x in messages){                              // запускаем цикл перебора элементов масива
     //console.log (messages[x])                         // выводим элемент в консоль
     sendMessage (messages[x]).then                      
@@ -47,4 +48,14 @@ for (const x in messages){                              // запускаем ц
             
         )
 }
+*/
+for (const x in messages){                              // запускаем цикл перебора элементов масива
+    //console.log (`${[x]} - й элемент массива messages "${messages[x]}"` )                         // выводим элемент в консоль
+    sendMessage (messages[x]).then                      
+        (
+            data => (typeof data === "string") ?         // проверяем относится полученное сообщение строкой
+                log[messages.getKey()] = data : null,    // заносим полученное сообщение в свойство (генерирует messages.getKey()) объекта log  : ничего не делаем
+        )
+}
 console.log (log)
+
