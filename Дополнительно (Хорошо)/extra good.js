@@ -8,7 +8,6 @@ const messages = [
     "space",
     "subtract"
 ]
-
 messages.getKey = () => {
     let key = new Date().toLocaleTimeString(), x = 0
     while ( log [ `${key}[${x}]` ] ) { x++ }
@@ -26,7 +25,6 @@ const sendMessage = message => new Promise (
 /*Задача: напилить код, который вызывает функцию sendMessage для каждого
  элемента массива messages и логирует полученные сообщения в объекте log
  следующим образом:
-
 log
 {
     22:25:57: "backspace"
@@ -38,3 +36,15 @@ log
     22:26:01[2]: "space"
 }
 */
+for (const x in messages){                              // запускаем цикл перебора элементов масива
+    //console.log (messages[x])                         // выводим элемент в консоль
+    sendMessage (messages[x]).then                      
+        (
+            
+            data => (typeof data == "string") ?         // проверяем относится полученное сообщение строкой
+                console.log ( data ): null,             // и выведет в консоль полученное сообщение : ничего не делаем
+            log[messages.getKey()] = messages[x]
+            
+        )
+}
+console.log (log)
